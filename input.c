@@ -1,5 +1,4 @@
 #include"shell.h"
-#include<string.h>
 /**
  * input - responsible for getting input from user.
  *
@@ -11,26 +10,38 @@ char **input(void)
 	char **arr;
 	size_t num = 0;
 	ssize_t length;
-	int count = 0;
+	int count = 0, v = 0;
 
 	length = getline(&data, &num, stdin);
 	if (length == -1)
 	{
 		free(data);
-		puts("\n");
 		return (NULL);
 	}
-
 	data[length - 1] = '\0';
 	count = count_string(data);
-
-	arr = malloc(sizeof(char *) * (count + 1));
-
+	arr = malloc(sizeof(char *) * (count));
+	if (arr == NULL)
+	{
+		printf("can't allocate malloc");
+		return (NULL);
+	}
 	count = 0;
 	token = strtok(data, "\t ");
 	while (token)
 	{
-		arr[count] = token;
+		arr[count] = malloc((strlen(token) + 1) * sizeof(char));
+		if (arr[count] == NULL)
+		{
+			printf("can't allocate malloc");
+			return (NULL);
+		}
+		while (token[v])
+		{
+			arr[count][v] = token[v];
+				v++;
+		}
+		v = 0;
 		count++;
 		token = strtok(NULL, "\t ");
 	}

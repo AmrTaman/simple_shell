@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <ctype.h>
+#include <string.h>
 
 char **input(void);
 int count_string(char *);

@@ -1,4 +1,4 @@
-include"shell.h"
+#include"shell.h"
 /**
  * count_string - counts strings
  * @data: data from input function
@@ -7,7 +7,7 @@ include"shell.h"
  */
 int count_string(char *data)
 {
-	int i = 0, count = 0, inword;
+	int i = 0, count = 0, in_word;
 
 	while (data[i] != '\0')
 	{
