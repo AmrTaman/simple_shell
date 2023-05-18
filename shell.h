@@ -12,4 +12,5 @@
 #include <ctype.h>
 
 char **input(void);
+int count_string(char *);
 #endif

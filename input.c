@@ -7,30 +7,22 @@
  */
 char **input(void)
 {
-	char *data, *token, *token2;
+	char *data, *token;
 	char **arr;
 	size_t num = 0;
 	ssize_t length;
-	int count = 0, in_word = 0, i = 0;
+	int count = 0;
 
 	length = getline(&data, &num, stdin);
 	if (length == -1)
-		return (NULL);
-	data[length - 1] = '\0';
-
-	while (data[i] != '\0')
 	{
-		if (isspace(data[i]))
-		{
-			in_word = 0;
-		}
-		else if (!in_word)
-		{
-			in_word = 1;
-			count++;
-		}
-		i++;
+		free(data);
+		puts("\n");
+		return (NULL);
 	}
+
+	data[length - 1] = '\0';
+	count = count_string(data);
 
 	arr = malloc(sizeof(char *) * (count + 1));
 
