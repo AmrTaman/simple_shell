@@ -1,14 +1,17 @@
 #include "shell.h"
 /**
  * main - simpel shell
+ * @ac: number of arguments
+ * @av: array of inputs
+ * @env: environment variables array
  *
- * return: 0
+ * Return: 0
  */
 
-int main (int *ac, char **av, char **env)
+int main(int *ac, char **av, char **env)
 {
 	char *get;
-	char *argv
+	char *argv;
 
 	while (1)
 	{
@@ -16,4 +19,5 @@ int main (int *ac, char **av, char **env)
 		input();
 
 	}
+	return (0)
 }

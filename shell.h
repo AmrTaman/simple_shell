@@ -9,6 +9,7 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <ctype.h>
 
-char *input(void);
+char **input(void);
 #endif
