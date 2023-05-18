@@ -1,16 +1,14 @@
 #include"shell.h"
 /**
- * input - responsible for getting input from user.
+ * get - gets stdin input
  *
- * Return: pointer
+ * Return: pointer(data)
  */
-char **input(void)
+char *get(void)
 {
-	char *data, *token;
-	char **arr;
+	char *data;
 	size_t num = 0;
 	ssize_t length;
-	int count = 0, v = 0;
 
 	length = getline(&data, &num, stdin);
 	if (length == -1)
@@ -18,6 +16,21 @@ char **input(void)
 		free(data);
 		return (NULL);
 	}
+	return (data);
+}
+
+/**
+ * input - responsible for getting input from user.
+ *
+ * Return: pointer
+ */
+char **input(void)
+{
+	char *token, *data;
+	char **arr;
+	int count = 0, v = 0;
+
+	data = get();
 	data[length - 1] = '\0';
 	count = count_string(data);
 	arr = malloc(sizeof(char *) * (count));
