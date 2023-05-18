@@ -31,7 +31,7 @@ char **input(void)
 		}
 		i++;
 	}
-	printf("%d\n", count);
+
 	arr = malloc(sizeof(char *) * (count + 1));
 
 	count = 0;
@@ -42,5 +42,6 @@ char **input(void)
 		count++;
 		token = strtok(NULL, "\t ");
 	}
+	free(data);
 	return (arr);
 }
