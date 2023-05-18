@@ -14,6 +14,6 @@ char *input(void)
 	length = getline(&data, &num, stdin);
 	if (length == -1)
 		return (NULL);
-	data[length - 1] = '\n';
+	data[length - 1] = '\0';
 	return (data);
 }
