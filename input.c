@@ -32,6 +32,8 @@ char **input(void)
 	int count = 0, v = 0;
 
 	data = get();
+	if (data[0] == '\0')
+		return (NULL);
 	count = count_string(data);
 	arr = malloc(sizeof(char *) * (count));
 	if (arr == NULL)
@@ -58,6 +60,7 @@ char **input(void)
 		count++;
 		token = strtok(NULL, "\t ");
 	}
+	arr = path(arr);
 	free(data);
 	return (arr);
 }

@@ -9,9 +9,9 @@
 char **path(char **name)
 {
 	char *be;
-	char **paths;
+	char **paths, **error;
 	int i;
-	char *env_var, *value;
+	char *env_var, *value, *ret;
 	char *n;
 
 	if (access(name[0], X_OK) == 0)
@@ -33,8 +33,16 @@ char **path(char **name)
 	{
 		if (access(strcat(be, n), X_OK) == 0)
 		{
-			relloc(name[0], strlen(strcat(be, n)) + 1);
+			ret = realloc(name[0], strlen(strcat(be, n)) + 1);
+			i = 0;
+			while (strcat(be, n)[i])
+			{
+				name[0][i] = strcat(be, n)[i];
+				i++;
+			}
+			return (name);
 		}
 		be = strtok(NULL, ":");
 	}
+	return (name);
 }

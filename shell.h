@@ -12,6 +12,8 @@
 #include <ctype.h>
 #include <string.h>
 
+extern char **environ;
 char **input(void);
 int count_string(char *);
+char **path(char **);
 #endif
