@@ -20,9 +20,9 @@ int main(int *ac, char **av, char **env)
 		get = input();
 		if (get == NULL)
 			break;
-		if (get[0] == NULL)
+		else if(get[0][0] == 'r')
 			continue;
-		if (access(get[0], X_OK) == -1)
+		else if(access(get[0], X_OK) == -1)
 		{
 			printf("%s: 1: %s: not found\n", av[0], get[0]);
 			continue;

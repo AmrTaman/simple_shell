@@ -16,6 +16,8 @@ char *get(void)
 		free(data);
 		return (NULL);
 	}
+	if (data[0] == '\n')
+		return (data);
 	data[length - 1] = '\0';
 	return (data);
 }
@@ -32,8 +34,16 @@ char **input(void)
 	int count = 0, v = 0;
 
 	data = get();
-	if (data[0] == '\0')
+	if (data == NULL)
 		return (NULL);
+	if (data[0] == '\n')
+	{
+		arr = malloc(sizeof(char *));
+		arr[0] = malloc(sizeof(char));
+		arr[0] = "r";
+		return arr;
+	}
+
 	count = count_string(data);
 	arr = malloc(sizeof(char *) * (count));
 	if (arr == NULL)
