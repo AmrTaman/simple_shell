@@ -16,6 +16,7 @@ char *get(void)
 		free(data);
 		return (NULL);
 	}
+	data[length - 1] = '\0';
 	return (data);
 }
 
@@ -31,7 +32,6 @@ char **input(void)
 	int count = 0, v = 0;
 
 	data = get();
-	data[length - 1] = '\0';
 	count = count_string(data);
 	arr = malloc(sizeof(char *) * (count));
 	if (arr == NULL)
