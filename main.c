@@ -10,39 +10,38 @@
 
 int main(int *ac, char **av, char **env)
 {
-	char **get;
-	char *argv;
-	unsigned int i = 0, h = 0;
+	char *input;
+	char **command;
+	int i, h;
 
+	signal(SIGINT, handler);
 	while (1)
 	{
-		printf("#cisfun$ ");
-		get = input();
-		if (get == NULL)
+		printf("$ ");
+		input = get_input();
+		if (input == NULL)
+		{
 			break;
-		else if(get[0][0] == 'r')
-			continue;
-		else if(access(get[0], X_OK) == -1)
+		}
+		else if (input[0] == '\0')
 		{
-			printf("%s: 1: %s: not found\n", av[0], get[0]);
+			free(input);
 			continue;
 		}
-		if (fork() == 0)
-		{
-			if (execve(get[0], get, env) == -1)
-			{
-				printf("Error executing command\n");
-				exit(EXIT_FAILURE);
-			}
-		}
+		command = parse_input(input, av[0]);
+		if (command == NULL)
+			continue;
+		if(fork() == 0)
+			execve(command[0], command, NULL);
+
 		wait(NULL);
-		while (get[h])
-		{
+		h = 0;
+		while (command[h])
 			h++;
-		}
-		for (i = 0; i < h; i++)
-			free(get[i]);
-		free(get);
+		for (i = 0; i <= h; i++)
+			free(command[i]);
+		free(command);
+		free(input);
 	}
 	return (0);
 }

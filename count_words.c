@@ -5,7 +5,7 @@
  *
  * Return: integer
  */
-int count_string(char *data)
+int count_words(char *data)
 {
 	int i = 0, count = 0, in_word;
 
@@ -22,5 +22,5 @@ int count_string(char *data)
 		}
 		i++;
 	}
-	return (count);
+	return (count + 1);
 }

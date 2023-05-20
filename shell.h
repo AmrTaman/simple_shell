@@ -13,7 +13,11 @@
 #include <string.h>
 
 extern char **environ;
-char **input(void);
-int count_string(char *);
-char **path(char **);
+void handler(int);
+char *get_input(void);
+int count_words(char *data);
+int count_char(char *str, char target);
+char *path_check(char *ip);
+char **parse_input(char *, char *);
+char  *str_concat(char *s1, char *s2);
 #endif

@@ -1,76 +1,32 @@
 #include"shell.h"
 /**
- * get - gets stdin input
+ * handler - handles the ctrl + c
  *
- * Return: pointer(data)
  */
-char *get(void)
+void handler(int sig)
 {
-	char *data;
-	size_t num = 0;
-	ssize_t length;
-
-	length = getline(&data, &num, stdin);
-	if (length == -1)
-	{
-		free(data);
-		return (NULL);
-	}
-	if (data[0] == '\n')
-		return (data);
-	data[length - 1] = '\0';
-	return (data);
+	(void)sig;
 }
-
 /**
- * input - responsible for getting input from user.
+ * get_input - get pointer inputs
  *
- * Return: pointer
+ * Return: pointer to a string
  */
-char **input(void)
+char *get_input(void)
 {
-	char *token, *data;
-	char **arr;
-	int count = 0, v = 0;
+	size_t num = 0;
+	ssize_t nread;
+	char *line = NULL;
 
-	data = get();
-	if (data == NULL)
-		return (NULL);
-	if (data[0] == '\n')
+	/* getting stdin i/p */
+	nread = getline(&line, &num, stdin);
+	/* checking EOF condition*/
+	if (nread == -1)
 	{
-		arr = malloc(sizeof(char *));
-		arr[0] = malloc(sizeof(char));
-		arr[0] = "r";
-		return arr;
-	}
-
-	count = count_string(data);
-	arr = malloc(sizeof(char *) * (count));
-	if (arr == NULL)
-	{
-		printf("can't allocate malloc");
+		free(line);
 		return (NULL);
 	}
-	count = 0;
-	token = strtok(data, "\t ");
-	while (token)
-	{
-		arr[count] = malloc((strlen(token) + 1) * sizeof(char));
-		if (arr[count] == NULL)
-		{
-			printf("can't allocate malloc");
-			return (NULL);
-		}
-		while (token[v])
-		{
-			arr[count][v] = token[v];
-				v++;
-		}
-		v = 0;
-		count++;
-		token = strtok(NULL, "\t ");
-	}
-	arr = path(arr);
-	free(data);
-	return (arr);
+	/* chaning the new line value to null*/
+	line[nread - 1] = '\0';
+	return (line);
 }
