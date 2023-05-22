@@ -1,6 +1,7 @@
 #include"shell.h"
 /**
  * handler - handles the ctrl + c
+ * @sig: SIGINT
  *
  */
 void handler(int sig)

@@ -1,13 +1,13 @@
 #include"shell.h"
 /**
- * count_string - counts strings
+ * count_words - counts strings
  * @data: data from input function
  *
  * Return: integer
  */
 int count_words(char *data)
 {
-	int i = 0, count = 0, in_word;
+	int i = 0, count = 0, in_word = 0;
 
 	while (data[i] != '\0')
 	{
