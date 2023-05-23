@@ -24,3 +24,25 @@ int count_words(char *data)
 	}
 	return (count + 1);
 }
+
+/**
+ * _isspace: discover spaces
+ * @c: integr
+ *
+ * Return: integer
+ */
+int _isspace(int c)
+{
+	switch (c)
+	{
+		case ' ':
+		case '\t':
+		case '\n':
+		case '\r':
+		case '\f':
+		case '\v':
+			return (1);
+		default:
+			return (0);
+	}
+}
