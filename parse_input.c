@@ -18,7 +18,7 @@ char **parse_input(char *input, char *fi, int line_count)
 		m++;
 	trick = calloc(1, sizeof(char) * m + 1);
 	m = 0;
-	strcpy(trick, input);
+	_strcpy(trick, input);
 	token = strtok(trick, "\t ");
 	if (access(token, X_OK) == -1)
 		token = path_check(token);
