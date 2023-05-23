@@ -3,10 +3,11 @@
  * parse_input - parses input to an array
  * @input: input from stdin
  * @fi: file name
+ * @line_count: line counting
  *
  * Return: array of command structure
  */
-char **parse_input(char *input, char *fi)
+char **parse_input(char *input, char *fi, int line_count)
 {
 	int count = 0, m = 0;
 	char *token, *trick;
@@ -24,9 +25,9 @@ char **parse_input(char *input, char *fi)
 	if (access(token, X_OK) == -1)
 	{
 		printf("%s: %d: %s: not found\n",
-				token, X_OK, fi);
+				fi, line_count, token);
 		free(input);
-		free(trick);
+		free(token);
 		return (NULL);
 	}
 	grid = calloc(1, sizeof(char *) * count);

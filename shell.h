@@ -18,6 +18,6 @@ char *get_input(void);
 int count_words(char *data);
 int count_char(char *str, char target);
 char *path_check(char *ip);
-char **parse_input(char *, char *);
+char **parse_input(char *, char *, int);
 char  *str_concat(char *s1, char *s2);
 #endif

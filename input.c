@@ -7,6 +7,7 @@
 void handler(int sig)
 {
 	(void)sig;
+
 }
 /**
  * get_input - get pointer inputs
