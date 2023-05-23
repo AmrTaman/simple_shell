@@ -38,27 +38,7 @@ int _strcmp(char *m1, char *m2)
 	else
 		return (*m1 < *m2 ? -1 : 1);
 }
-/**
- * _isspace: discover spaces
- *@c: integr
- *
- *Return: integer
- */
-int _isspace(int c)
-{
-	switch (c)
-	{
-		case ' ':
-		case '\t':
-		case '\n':
-		case '\r':
-		case '\f':
-		case '\v':
-			return (1);
-		default:
-			return (0);
-	}
-}
+
 
 /**
  * _strcpy - copies a string
