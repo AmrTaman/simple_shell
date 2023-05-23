@@ -17,6 +17,7 @@
 
 extern char **environ;
 int _isspace(int);
+void print_number_in(int);
 int _strcmp(char *, char *);
 int _strlen(char *);
 void handler(int);
