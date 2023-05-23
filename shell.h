@@ -12,6 +12,10 @@
 #include <ctype.h>
 #include <string.h>
 
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
+
 extern char **environ;
 void handler(int);
 char *_strcpy(char *, char *);
