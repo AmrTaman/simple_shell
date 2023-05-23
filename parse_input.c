@@ -2,7 +2,7 @@
 /**
  * print_error - prints file not found error
  * @token: input from stdin
- * @count: count of lines
+ * @i: count of lines
  * @fi: filename
  *
  */
@@ -10,7 +10,7 @@ void print_error(char *fi, char *token, int i)
 {
 	_puts(fi);
 	_puts(": ");
-	_putchar(i);
+	print_number_in(i);
 	_puts(": ");
 	_puts(token);
 	_puts(": not found\n");
@@ -32,7 +32,7 @@ char **parse_input(char *input, char *fi, int line_count)
 	count = count_words(input);
 	while (input[m])
 		m++;
-	trick = calloc(1, sizeof(char) * m + 1);
+	trick = malloc(sizeof(char) * m + 1);
 	m = 0;
 	_strcpy(trick, input);
 	token = strtok(trick, "\t ");
@@ -40,11 +40,9 @@ char **parse_input(char *input, char *fi, int line_count)
 		token = path_check(token);
 	if (access(token, X_OK) == -1)
 	{
-	/**	printf("%s: %d: %s: not found\n",
-				fi, line_count, token); **/
 		print_error(fi, token, line_count);
-	//	free(input);
 		free(trick);
+		free(input);
 		return (NULL);
 	}
 	grid = calloc(1, sizeof(char *) * count);

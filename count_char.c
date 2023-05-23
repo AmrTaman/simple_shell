@@ -14,7 +14,7 @@ void print_number_in(int n)
 		x = -x;
 	}
 	if ((x / 10) > 0)
-		print_number(x / 10);
+		print_number_in(x / 10);
 
 	_putchar(x % 10 + '0');
 }

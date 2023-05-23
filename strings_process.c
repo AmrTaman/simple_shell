@@ -24,14 +24,17 @@ int _strlen(char *s)
  *
  * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
-int _strcmp(char *m1, char *m2)
+int _strcmp(char *m1, char *m2, int x)
 {
-	while (*m1 && *m2)
+	int i = 0;
+
+	while (m1[i] && m2[i] && x >= i)
 	{
 		if (*m1 != *m2)
 			return (*m1 - *m2);
 		m1++;
 		m2++;
+		i++;
 	}
 	if (*m1 == *m2)
 		return (0);

@@ -55,7 +55,7 @@ char *path_check(char *ip)
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		env_var = environ[i];
-		if (strncmp(env_var, "PATH", 4)
+		if (_strcmp(env_var, "PATH", 4)
 				== 0 && env_var[4] == '=')
 		{
 			i = 0;
