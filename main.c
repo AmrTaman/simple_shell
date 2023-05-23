@@ -17,11 +17,11 @@ int main(int *ac, char **av, char **env)
 	signal(SIGINT, handler);
 	while (1)
 	{
-		printf("$ ");
+		_puts("$ ");
 		input = get_input();
 		if (input == NULL)
 		{
-			printf("\n");
+			_puts("\n");
 			break;
 		}
 		else if (input[0] == '\0')
