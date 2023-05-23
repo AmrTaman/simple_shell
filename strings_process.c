@@ -70,15 +70,13 @@ char *_strcpy(char *frst, char *scnd)
  */
 void _puts(char *str)
 {
-	int i = 0;
+	int i;
 
-	if (!str)
-		return;
-	while (str[i] != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		_putchar(str[i]);
-		i++;
 	}
+return;
 }
 
 /**
@@ -90,16 +88,5 @@ void _puts(char *str)
  */
 int _putchar(char c)
 {
-	static int x;
-	static char buf[WRITE_BUF_SIZE];
-
-	if (c == BUF_FLUSH || x >= WRITE_BUF_SIZE)
-	{
-		write(1, buf, x);
-		fflush(stdout);
-		x = 0;
-	}
-	if (x != BUF_FLUSH)
-		buf[x++] = c;
-	return (1);
+	return (write(1, &c, 1));
 }
