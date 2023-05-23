@@ -1,12 +1,29 @@
 #include"shell.h"
 /**
+ * print_error - prints file not found error
+ * @token: input from stdin
+ * @count: count of lines
+ * @fi: filename
+ *
+ */
+void print_error(char *fi, char *token, int i)
+{
+	_puts(fi);
+	_puts(": ");
+	_puts(i);
+	_puts(": ");
+	_puts(token);
+	_puts(": not found\n");
+}
+/**
  * parse_input - parses input to an array
  * @input: input from stdin
  * @fi: file name
+ * @line_count: line counting
  *
  * Return: array of command structure
  */
-char **parse_input(char *input, char *fi)
+char **parse_input(char *input, char *fi, int line_count)
 {
 	int count = 0, m = 0;
 	char *token, *trick;
@@ -15,26 +32,26 @@ char **parse_input(char *input, char *fi)
 	count = count_words(input);
 	while (input[m])
 		m++;
-	trick = calloc(1, sizeof(char) * m + 1);
+	trick = malloc(sizeof(char) * m + 1);
 	m = 0;
-	strcpy(trick, input);
+	_strcpy(trick, input);
 	token = strtok(trick, "\t ");
 	if (access(token, X_OK) == -1)
 		token = path_check(token);
 	if (access(token, X_OK) == -1)
 	{
 		printf("%s: %d: %s: not found\n",
-				token, X_OK, fi);
+				fi, line_count, token);
 		free(input);
-		free(trick);
+		free(token);
 		return (NULL);
 	}
-	grid = calloc(1, sizeof(char *) * count);
+	grid = malloc(sizeof(char *) * count);
 	count = 0;
 	while (token)
 	{
-		grid[count] = calloc(1, sizeof(char) * strlen(token) + 1);
-		strcpy(grid[count], token);
+		grid[count] = malloc(sizeof(char) * strlen(token) + 1);
+		_strcpy(grid[count], token);
 		count++;
 		if (m == 0)
 		{

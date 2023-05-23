@@ -12,15 +12,16 @@ int main(int *ac, char **av, char **env)
 {
 	char *input;
 	char **command;
-	int i, h;
+	int i, h, count = 1;
 
 	signal(SIGINT, handler);
 	while (1)
 	{
-		printf("$ ");
+		_puts("$ ");
 		input = get_input();
 		if (input == NULL)
 		{
+			_puts("\n");
 			break;
 		}
 		else if (input[0] == '\0')
@@ -28,7 +29,8 @@ int main(int *ac, char **av, char **env)
 			free(input);
 			continue;
 		}
-		command = parse_input(input, av[0]);
+		command = parse_input(input, av[0], count);
+		count++;
 		if (command == NULL)
 			continue;
 		if (fork() == 0)

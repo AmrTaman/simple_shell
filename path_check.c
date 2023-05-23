@@ -12,7 +12,7 @@ char *setting_string(char *path, char *ip, int count)
 	int i = 0, m = 0;
 	char *value;
 
-	value = calloc(1, sizeof(char) *
+	value = malloc(sizeof(char) *
 			(strlen(path) + (count * (strlen(ip) + 1))) + 1);
 	while (path[i])
 	{
@@ -55,7 +55,7 @@ char *path_check(char *ip)
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		env_var = environ[i];
-		if (strncmp(env_var, "PATH", 4)
+		if (_strncmp(env_var, "PATH", 4)
 				== 0 && env_var[4] == '=')
 		{
 			i = 0;

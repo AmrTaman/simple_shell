@@ -11,7 +11,7 @@ int count_words(char *data)
 
 	while (data[i] != '\0')
 	{
-		if (isspace(data[i]))
+		if (_isspace(data[i]))
 		{
 			in_word = 0;
 		}
@@ -23,4 +23,26 @@ int count_words(char *data)
 		i++;
 	}
 	return (count + 1);
+}
+
+/**
+ * _isspace: discover spaces
+ * @c: integr
+ *
+ * Return: integer
+ */
+int _isspace(int c)
+{
+	switch (c)
+	{
+		case ' ':
+		case '\t':
+		case '\n':
+		case '\r':
+		case '\f':
+		case '\v':
+			return (1);
+		default:
+			return (0);
+	}
 }
