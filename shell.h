@@ -14,6 +14,9 @@
 
 extern char **environ;
 void handler(int);
+char *_strcpy(char *, char *);
+void _puts(char *str);
+int _putchar(char c);
 char *get_input(void);
 int count_words(char *data);
 int count_char(char *str, char target);
