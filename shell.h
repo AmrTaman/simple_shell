@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <ctype.h>
+#include <string.h>
 
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024

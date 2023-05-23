@@ -90,15 +90,16 @@ void _puts(char *str)
  */
 int _putchar(char c)
 {
-	static int i;
+	static int x;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || x >= WRITE_BUF_SIZE)
 	{
-		write(1, buf, i);
-		i = 0;
+		write(1, buf, x);
+		fflush(stdout);
+		x = 0;
 	}
-	if (c != BUF_FLUSH)
-		buf[i++] = c;
+	if (x != BUF_FLUSH)
+		buf[x++] = c;
 	return (1);
 }

@@ -10,7 +10,7 @@ void print_error(char *fi, char *token, int i)
 {
 	_puts(fi);
 	_puts(": ");
-	_puts(i);
+	_putchar(i);
 	_puts(": ");
 	_puts(token);
 	_puts(": not found\n");
@@ -32,7 +32,7 @@ char **parse_input(char *input, char *fi, int line_count)
 	count = count_words(input);
 	while (input[m])
 		m++;
-	trick = malloc(sizeof(char) * m + 1);
+	trick = calloc(1, sizeof(char) * m + 1);
 	m = 0;
 	_strcpy(trick, input);
 	token = strtok(trick, "\t ");
@@ -40,17 +40,18 @@ char **parse_input(char *input, char *fi, int line_count)
 		token = path_check(token);
 	if (access(token, X_OK) == -1)
 	{
-		printf("%s: %d: %s: not found\n",
-				fi, line_count, token);
-		free(input);
-		free(token);
+	/**	printf("%s: %d: %s: not found\n",
+				fi, line_count, token); **/
+		print_error(fi, token, line_count);
+	//	free(input);
+		free(trick);
 		return (NULL);
 	}
-	grid = malloc(sizeof(char *) * count);
+	grid = calloc(1, sizeof(char *) * count);
 	count = 0;
 	while (token)
 	{
-		grid[count] = malloc(sizeof(char) * strlen(token) + 1);
+		grid[count] = calloc(1, sizeof(char) * _strlen(token) + 1);
 		_strcpy(grid[count], token);
 		count++;
 		if (m == 0)
