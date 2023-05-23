@@ -11,7 +11,7 @@ int count_words(char *data)
 
 	while (data[i] != '\0')
 	{
-		if (isspace(data[i]))
+		if (_isspace(data[i]))
 		{
 			in_word = 0;
 		}
