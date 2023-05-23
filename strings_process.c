@@ -21,6 +21,7 @@ int _strlen(char *s)
  * _strcmp - performs comparison of two strangs.
  * @m1: first string
  * @m2: second string
+ * @x: length of comparison
  *
  * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
