@@ -15,6 +15,7 @@
 #define BUF_FLUSH -1
 
 extern char **environ;
+int _isspace(int);
 int _strcmp(char *, char *);
 int _strlen(char *);
 void handler(int);
