@@ -6,7 +6,7 @@ int env(void)
 
 	while (environ[i])
 	{
-		printf("%s\n", environ[i]);
+		puts(environ);
 		i++;
 	}
 }

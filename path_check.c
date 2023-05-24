@@ -50,7 +50,7 @@ char *setting_string(char *path, char *ip, int count)
 char *path_check(char *ip)
 {
 	char *path, *env_var, *value, *token;
-	int i = 0, count = 0, m = 0;
+	int i = 0, count = 0;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
