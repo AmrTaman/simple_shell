@@ -61,14 +61,14 @@ char *path_check(char *ip)
 			i = 0;
 			path = env_var + 5;
 			count = count_char(path, ':');
-			value = setting_string(path, ip, count);
+			value = setting_string(path, ip, count + 1);
 			break;
 		}
 	}
 	token = strtok(value, ":");
 	while (token)
 	{
-		if (access(token, X_OK) == 0)
+	if (access(token, X_OK) == 0)
 		{
 			free(value);
 			return (token);
