@@ -25,8 +25,8 @@ void print_error(char *fi, char *token, int i)
  */
 char **parse_input(char *input, char *fi, int line_count)
 {
-	int count = 0, m = 0;
-	char *token, *trick;
+	int count = 0, m = 0, i = 0;
+	char *token, *trick, *check = "env";
 	char **grid;
 
 	count = count_words(input);
@@ -36,6 +36,18 @@ char **parse_input(char *input, char *fi, int line_count)
 	m = 0;
 	_strcpy(trick, input);
 	token = strtok(trick, "\t ");
+
+	while (token[i] == check[i])
+	{
+		i++;
+	}
+	if (i == 4)
+	{
+		env();
+		free(trick);
+		free(input);
+		return (NULL);
+	}
 	if (access(token, X_OK) == -1)
 		token = path_check(token);
 	if (access(token, X_OK) == -1)
