@@ -4,8 +4,9 @@
  * @token: token pointer
  * @input: hi
  * @trick: bi
+ * @environ: environ
  */
-void echeck(char *token, char *input, char *trick)
+void echeck(char *token, char *input, char *trick, char **environ)
 {
 	int i = 0;
 	char *check = "exit";
@@ -16,7 +17,8 @@ void echeck(char *token, char *input, char *trick)
 	{
 		free(trick);
 		free(input);
-		exit(EXIT_SUCCESS);
+		(void)environ;
+		exit(98);
 	}
 }
 
@@ -62,9 +64,9 @@ char **parsing(char *ayy, char *input, int count, char *token, int x)
 		count++;
 		if (m == 0)
 		{
-			token = _strtok(input, "\t ");
+			token = strtok(input, "\t ");
 		}
-		token = _strtok(NULL, "\t ");
+		token = strtok(NULL, "\t ");
 		m++;
 	}
 	return (grid);
@@ -107,8 +109,8 @@ char **parse_input(char *input, char *fi, int line_count)
 	trick[m + 1] = '\0';
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
-	token = _strtok(trick, "\t ");
-	echeck(token, input, trick);
+	token = strtok(trick, "\t ");
+	echeck(token, input, trick, environ);
 	while (token[i] == check[i])
 		i++;
 	if (i == 4)
@@ -123,7 +125,7 @@ char **parse_input(char *input, char *fi, int line_count)
 	}
 	ayy = malloc(_strlen(token) + 1);
 	ayy[_strlen(token)] = '\0';
-	 _strcpy(ayy, token);
+	_strcpy(ayy, token);
 	if (access(ayy, X_OK) == -1)
 	{
 		free(token);

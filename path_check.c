@@ -67,7 +67,7 @@ char *path_check(char *ip)
 			break;
 		}
 	}
-	token = _strtok(value, ":");
+	token = strtok(value, ":");
 	while (token)
 	{
 		if (access(token, X_OK) == 0)
@@ -78,7 +78,7 @@ char *path_check(char *ip)
 			free(value);
 			return (last);
 		}
-	token = _strtok(NULL, ":");
+	token = strtok(NULL, ":");
 	}
 	free(value);
 	return (ip);

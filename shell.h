@@ -11,8 +11,8 @@
 #include <ctype.h>
 #include <string.h>
 
-char *_strtok(char *, const char *);
 extern char **environ;
+void echeck(char *, char *, char *, char **);
 int _isspace(int);
 int env(char*, char*);
 void print_number_in(int);

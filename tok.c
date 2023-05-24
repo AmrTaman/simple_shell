@@ -9,8 +9,8 @@
 
 char *_strtok(char *str, const char *delim)
 {
-	char *last_str = NULL;
-	char *last_token = NULL;
+	static char *last_str = NULL;
+	static char *last_token = NULL;
 	char *token;
 
 	if (str != NULL)
