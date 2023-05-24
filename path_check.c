@@ -12,8 +12,8 @@ char *setting_string(char *path, char *ip, int count)
 	int i = 0, m = 0;
 	char *value;
 
-	value = malloc(sizeof(char) *
-			(strlen(path) + (count * (strlen(ip) + 1))) + 1);
+	value = calloc(1, sizeof(char) *
+			(_strlen(path) + (count * (_strlen(ip) + 1))) + 1);
 	while (path[i])
 	{
 		count = 0;
