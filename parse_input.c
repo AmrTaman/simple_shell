@@ -120,7 +120,7 @@ char **parse_input(char *input, char *fi, int line_count)
 	trick[_strlen(input)] = ' ';
 	token = _strtok(trick, "\t ");
 	if (echeck(token, input, trick, fi, line_count))
-		return (input);
+		return (NULL);
 	while (token[i] == check[i])
 		i++;
 	if (i == 4)
