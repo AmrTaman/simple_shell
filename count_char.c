@@ -39,3 +39,4 @@ int count_char(char *str, char target)
 	}
 	return (count);
 }
+

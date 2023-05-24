@@ -109,3 +109,4 @@ char **parse_input(char *input, char *fi, int line_count)
 	free(ayy);
 	return (grid);
 }
+

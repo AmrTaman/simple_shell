@@ -46,3 +46,4 @@ int _isspace(int c)
 			return (0);
 	}
 }
+
