@@ -38,18 +38,5 @@ int _isspace(int c)
 		return (1);
 	else
 		return (0);
-	/*
-	switch (c)
-	{
-		case ' ':
-		case '\t':
-		case '\n':
-		case '\r':
-		case '\f':
-		case '\v':
-			return (1);
-		default:
-			return (0);
-	}*/
 }
 

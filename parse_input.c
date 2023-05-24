@@ -77,15 +77,13 @@ void print_error(char *fi, char *token, int i)
 char **parse_input(char *input, char *fi, int line_count)
 {
 	int count = 0, m = 0, i = 0, x = 0;
-	char *token, *trick, *check = "env", *ayy;
-	char **grid;
+	char *token, *trick, *check = "env", *ayy, **grid;
 
 	count = count_words(input);
 	while (input[m])
 		m++;
 	trick = malloc(sizeof(char) * m + 2);
-	trick[m + 1] = '\0' ;
-	m = 0;
+	trick[m + 1] = '\0';
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
 	token = strtok(trick, "\t ");
