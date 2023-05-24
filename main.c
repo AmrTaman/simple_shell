@@ -32,7 +32,9 @@ int main(int ac, char **av)
 		command = parse_input(input, av[0], count);
 		count++;
 		if (command == NULL)
+		{
 			continue;
+		}
 		if (fork() == 0)
 			execve(command[0], command, NULL);
 		wait(NULL);

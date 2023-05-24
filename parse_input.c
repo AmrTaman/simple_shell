@@ -21,7 +21,8 @@ int echeck(char *token, char *input, char *trick, char *fi, int m)
 	{
 		print_error(fi, token, m);
 		free(trick);
-		return (4);
+		free(input);
+		exit(127);
 	}
 	if (i == 5)
 	{
