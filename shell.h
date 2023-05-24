@@ -12,9 +12,10 @@
 #include <string.h>
 
 extern char **environ;
-void echeck(char *, char *, char *);
 char *_strtok(char *, char *);
 int _isspace(int);
+void print_error(char *fi, char *token, int i);
+int echeck(char *token, char *input, char *trick, char *fi, int m);
 int env(char*, char*);
 void print_number_in(int);
 int _strcmp(char *, char *, int);

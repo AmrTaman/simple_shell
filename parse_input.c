@@ -4,22 +4,34 @@
  * @token: token pointer
  * @input: hi
  * @trick: bi
+ * @fi: file name
+ * @m: number of line
+ *
+ * Return: 0 or 1
  */
-void echeck(char *token, char *input, char *trick)
+int echeck(char *token, char *input, char *trick, char *fi, int m)
 {
-	int i = 0;
+	int i = 0, x = 0;
 	char *check = "exit";
 
 	while (token[i] == check[i])
 		i++;
+	x = count_words(input);
+	if (x > 2 && i == 5)
+	{
+		print_error(fi, token, m);
+		free(trick);
+		free(input);
+		return (1);
+	}
 	if (i == 5)
 	{
 		free(trick);
 		free(input);
 		exit(EXIT_SUCCESS);
 	}
+	return (0);
 }
-
 /**
  * parsing - returns the tokens
  * @ayy: pointer
@@ -108,7 +120,8 @@ char **parse_input(char *input, char *fi, int line_count)
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
 	token = _strtok(trick, "\t ");
-	echeck(token, input, trick);
+	if (echeck(token, input, trick, fi, line_count))
+		return (NULL);
 	while (token[i] == check[i])
 		i++;
 	if (i == 4)
