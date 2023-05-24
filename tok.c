@@ -1,52 +1,62 @@
 #include "shell.h"
 /**
+ * delim - delimeter
+ * @m: m
+ * @delim: delimeter
+ *
+ * Return: 0
+ */
+unsigned int delim(char m, char *delim)
+{
+	while(*delim != '\0')
+	{
+		if(m == *delim)
+			return (1);
+		delim++;
+	}
+	return (0);
+}
+/**
  * _strtok - implememtation of strtok()
  * @str: string
  * @delim: delim
  *
  * Return: string
  */
-
 char *_strtok(char *str, const char *delim)
 {
-	static char *last_str = NULL;
-	static char *last_token = NULL;
-	char *token;
+	static char *strb;
 
-	if (str != NULL)
-		last_str = str;
-	else if (last_str == NULL)
+	if(!str)
+		str = strb;
+	if(!str)
 		return (NULL);
-	token = last_str;
-	while (*last_str != '\0')
+	while(1)
 	{
-		const char *d = delim;
-
-		while (*d != '\0')
+		if(delim(*str, delim))
 		{
-			if (*last_str == *d)
-			{
-				*last_str = '\0';
-				last_token = last_str + 1;
-				if (token != last_str)
-				{
-					return (token);
-				}
-				else
-				{
-					token = last_token;
-					break;
-				}
-			}
-			d++;
+			str++;
+			continue;
 		}
-		if (last_token != NULL)
-		{
-			last_str = last_token;
-			last_token = NULL;
-		}
-		else
-			last_str++;
+		if(*str == '\0')
+			return (NULL); 
+		break;
 	}
-	return (token);
+	char *ret = str;
+
+	while(1)
+	{
+		if(*str == '\0')
+		{
+			strb = str;
+			return (ret);
+		}
+		if(delim(*str, delim))
+		{
+			*str = '\0';
+			strb = str + 1;
+			return (ret);
+		}
+		str++;
+	}
 }
