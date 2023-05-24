@@ -4,7 +4,6 @@
  * @token: token pointer
  * @input: hi
  * @trick: bi
- * @environ: environ
  */
 void echeck(char *token, char *input, char *trick)
 {
