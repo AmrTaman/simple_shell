@@ -22,7 +22,7 @@ int echeck(char *token, char *input, char *trick, char *fi, int m)
 		print_error(fi, token, m);
 		free(trick);
 		free(input);
-		return (1);
+		exit(0);
 	}
 	if (i == 5)
 	{
