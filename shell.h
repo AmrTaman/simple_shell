@@ -13,6 +13,7 @@
 
 extern char **environ;
 void echeck(char *, char *, char *, char **);
+char *_strtok(char *, char *);
 int _isspace(int);
 int env(char*, char*);
 void print_number_in(int);

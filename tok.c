@@ -6,7 +6,7 @@
  *
  * Return: 0
  */
-unsigned int delim(char m, char *delim)
+unsigned int delimt(char m, char *delim)
 {
 	while(*delim != '\0')
 	{
@@ -23,9 +23,9 @@ unsigned int delim(char m, char *delim)
  *
  * Return: string
  */
-char *_strtok(char *str, const char *delim)
+char *_strtok(char *str, char *delim)
 {
-	static char *strb;
+	static char *strb, *ret;
 
 	if(!str)
 		str = strb;
@@ -33,7 +33,7 @@ char *_strtok(char *str, const char *delim)
 		return (NULL);
 	while(1)
 	{
-		if(delim(*str, delim))
+		if(delimt(*str, delim))
 		{
 			str++;
 			continue;
@@ -42,7 +42,7 @@ char *_strtok(char *str, const char *delim)
 			return (NULL); 
 		break;
 	}
-	char *ret = str;
+	ret = str;
 
 	while(1)
 	{
@@ -51,7 +51,7 @@ char *_strtok(char *str, const char *delim)
 			strb = str;
 			return (ret);
 		}
-		if(delim(*str, delim))
+		if(delimt(*str, delim))
 		{
 			*str = '\0';
 			strb = str + 1;
