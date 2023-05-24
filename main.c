@@ -12,6 +12,7 @@ int main(int ac, char **av)
 	char **command;
 	int i, h, count = 1;
 
+	signal(SIGINT, handler);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
