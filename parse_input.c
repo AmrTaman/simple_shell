@@ -6,7 +6,7 @@
  * @trick: bi
  * @environ: environ
  */
-void echeck(char *token, char *input, char *trick, char **environ)
+void echeck(char *token, char *input, char *trick)
 {
 	int i = 0;
 	char *check = "exit";
@@ -17,7 +17,6 @@ void echeck(char *token, char *input, char *trick, char **environ)
 	{
 		free(trick);
 		free(input);
-		(void)environ;
 		exit(EXIT_SUCESS);
 	}
 }
@@ -110,7 +109,7 @@ char **parse_input(char *input, char *fi, int line_count)
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
 	token = _strtok(trick, "\t ");
-	echeck(token, input, trick, environ);
+	echeck(token, input, trick);
 	while (token[i] == check[i])
 		i++;
 	if (i == 4)
