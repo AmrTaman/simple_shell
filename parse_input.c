@@ -18,7 +18,7 @@ void echeck(char *token, char *input, char *trick, char **environ)
 		free(trick);
 		free(input);
 		(void)environ;
-		exit(98);
+		exit(EXIT_SUCESS);
 	}
 }
 
