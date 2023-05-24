@@ -12,8 +12,8 @@ char *setting_string(char *path, char *ip, int count)
 	int i = 0, m = 0;
 	char *value;
 
-	value = calloc(1, sizeof(char) *
-			(_strlen(path) + (count * (_strlen(ip) + 1))) + 1);
+	value = calloc((_strlen(path) +
+				(count * (_strlen(ip) + 1))) + 1, sizeof(char));
 	while (path[i])
 	{
 		count = 0;
@@ -49,7 +49,7 @@ char *setting_string(char *path, char *ip, int count)
  */
 char *path_check(char *ip)
 {
-	char *path, *env_var, *value, *token;
+	char *path, *env_var, *value, *token, *last;
 	int i = 0, count = 0;
 
 	for (i = 0; environ[i] != NULL; i++)
@@ -68,12 +68,14 @@ char *path_check(char *ip)
 	token = strtok(value, ":");
 	while (token)
 	{
-	if (access(token, X_OK) == 0)
+		if (access(token, X_OK) == 0)
 		{
+			last = calloc(1, sizeof(char) * _strlen(token) + 1);
+			_strcpy(last, token);
 			free(value);
-			return (token);
+			return (last);
 		}
-		token = strtok(NULL, ":");
+	token = strtok(NULL, ":");
 	}
 	free(value);
 	return (ip);
