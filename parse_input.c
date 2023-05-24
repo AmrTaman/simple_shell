@@ -62,9 +62,9 @@ char **parsing(char *ayy, char *input, int count, char *token, int x)
 		count++;
 		if (m == 0)
 		{
-			token = strtok(input, "\t ");
+			token = _strtok(input, "\t ");
 		}
-		token = strtok(NULL, "\t ");
+		token = _strtok(NULL, "\t ");
 		m++;
 	}
 	return (grid);
@@ -107,7 +107,7 @@ char **parse_input(char *input, char *fi, int line_count)
 	trick[m + 1] = '\0';
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
-	token = strtok(trick, "\t ");
+	token = _strtok(trick, "\t ");
 	echeck(token, input, trick);
 	while (token[i] == check[i])
 		i++;

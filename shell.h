@@ -11,6 +11,7 @@
 #include <ctype.h>
 #include <string.h>
 
+char *_strtok(char *, const char *);
 extern char **environ;
 int _isspace(int);
 int env(char*, char*);
