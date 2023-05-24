@@ -23,7 +23,7 @@ int main(int ac, char **av)
 			input = get_input();
 		if (input == NULL)
 		{
-			exit(EXIT_SUCCESS);
+			exit(EXIT_FAILURE);
 		}
 		else if (input[0] == '\0')
 		{
