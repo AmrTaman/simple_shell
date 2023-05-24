@@ -15,6 +15,12 @@ char **parsing(char *ayy, char *input, int count, char *token, int x)
 	int m = 0;
 
 	grid = malloc(sizeof(char *) * count);
+	while (m < count)
+	{
+		grid[m] = NULL;
+		m++;
+	}
+	m = 0;
 	count = 0;
 	if (x > 0)
 		free(token);
@@ -23,13 +29,13 @@ char **parsing(char *ayy, char *input, int count, char *token, int x)
 		if (count == 0)
 		{
 			grid[count] = malloc(sizeof(char) * _strlen(ayy) + 1);
-			grid[_strlen(ayy) + 1] = '\0';
+			grid[count][_strlen(ayy)] = '\0';
 			_strcpy(grid[count], ayy);
 		}
 		if (count != 0)
 		{
 			grid[count] = malloc(sizeof(char) * _strlen(token) + 1);
-			grid[_strlen(token) + 1] = '\0';
+			grid[count][_strlen(token)] = '\0';
 			_strcpy(grid[count], token);
 		}
 		count++;
@@ -71,15 +77,13 @@ void print_error(char *fi, char *token, int i)
 char **parse_input(char *input, char *fi, int line_count)
 {
 	int count = 0, m = 0, i = 0, x = 0;
-	char *token, *trick, *check = "env", *ayy;
-	char **grid;
+	char *token, *trick, *check = "env", *ayy, **grid;
 
 	count = count_words(input);
 	while (input[m])
 		m++;
 	trick = malloc(sizeof(char) * m + 2);
-	trick[m + 2] = '\0' ;
-	m = 0;
+	trick[m + 1] = '\0';
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
 	token = strtok(trick, "\t ");
@@ -97,7 +101,8 @@ char **parse_input(char *input, char *fi, int line_count)
 		token = path_check(token);
 		x++;
 	}
-	ayy = calloc(1, _strlen(token) + 1);
+	ayy = malloc(_strlen(token) + 1);
+	ayy[_strlen(token)] = '\0';
 	 _strcpy(ayy, token);
 	if (access(ayy, X_OK) == -1)
 	{

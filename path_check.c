@@ -12,8 +12,10 @@ char *setting_string(char *path, char *ip, int count)
 	int i = 0, m = 0;
 	char *value;
 
-	value = calloc((_strlen(path) +
-				(count * (_strlen(ip) + 1))) + 1, sizeof(char));
+	value = malloc(((_strlen(path) +
+				(count * (_strlen(ip) + 1))) + 1) * sizeof(char));
+	value[((_strlen(path) +
+				(count * (_strlen(ip) + 1))))] = '\0';
 	while (path[i])
 	{
 		count = 0;
@@ -71,7 +73,7 @@ char *path_check(char *ip)
 		if (access(token, X_OK) == 0)
 		{
 			last = malloc(sizeof(char) * _strlen(token) + 1);
-			last[_strlen(token) + 1] = '\0';
+			last[_strlen(token)] = '\0';
 			_strcpy(last, token);
 			free(value);
 			return (last);

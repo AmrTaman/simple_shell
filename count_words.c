@@ -33,17 +33,10 @@ int count_words(char *data)
  */
 int _isspace(int c)
 {
-	switch (c)
-	{
-		case ' ':
-		case '\t':
-		case '\n':
-		case '\r':
-		case '\f':
-		case '\v':
-			return (1);
-		default:
-			return (0);
-	}
+	if (c == ' ' || c == '\t' || c == '\n' ||
+			c == '\r' || c == '\f' || c == '\v')
+		return (1);
+	else
+		return (0);
 }
 
