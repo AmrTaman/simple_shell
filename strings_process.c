@@ -21,17 +21,21 @@ int _strlen(char *s)
  * _strcmp - performs comparison of two strangs.
  * @m1: first string
  * @m2: second string
+ * @x: length of comparison
  *
  * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
-int _strcmp(char *m1, char *m2)
+int _strcmp(char *m1, char *m2, int x)
 {
-	while (*m1 && *m2)
+	int i = 0;
+
+	while (m1[i] && m2[i] && x >= i)
 	{
 		if (*m1 != *m2)
 			return (*m1 - *m2);
 		m1++;
 		m2++;
+		i++;
 	}
 	if (*m1 == *m2)
 		return (0);
@@ -70,15 +74,13 @@ char *_strcpy(char *frst, char *scnd)
  */
 void _puts(char *str)
 {
-	int i = 0;
+	int i;
 
-	if (!str)
-		return;
-	while (str[i] != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		_putchar(str[i]);
-		i++;
 	}
+return;
 }
 
 /**
@@ -90,15 +92,5 @@ void _puts(char *str)
  */
 int _putchar(char c)
 {
-	static int i;
-	static char buf[WRITE_BUF_SIZE];
-
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
-	{
-		write(1, buf, i);
-		i = 0;
-	}
-	if (c != BUF_FLUSH)
-		buf[i++] = c;
-	return (1);
+	return (write(1, &c, 1));
 }

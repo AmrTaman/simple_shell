@@ -26,10 +26,10 @@ int count_words(char *data)
 }
 
 /**
- * _isspace: discover spaces
+ * _isspace - discover spaces and return their length
  * @c: integr
  *
- * Return: integer
+ * Return: 1 or 0
  */
 int _isspace(int c)
 {

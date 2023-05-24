@@ -9,14 +9,12 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <ctype.h>
-
-#define READ_BUF_SIZE 1024
-#define WRITE_BUF_SIZE 1024
-#define BUF_FLUSH -1
+#include <string.h>
 
 extern char **environ;
 int _isspace(int);
-int _strcmp(char *, char *);
+void print_number_in(int);
+int _strcmp(char *, char *, int);
 int _strlen(char *);
 void handler(int);
 char *_strcpy(char *, char *);

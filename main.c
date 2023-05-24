@@ -17,7 +17,10 @@ int main(int *ac, char **av, char **env)
 	signal(SIGINT, handler);
 	while (1)
 	{
-		_puts("$ ");
+		_puts("$");
+		fflush(stdout);
+		_puts(" ");
+		fflush(stdout);
 		input = get_input();
 		if (input == NULL)
 		{

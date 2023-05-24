@@ -9,7 +9,6 @@ void handler(int sig)
 	(void)sig;
 	_puts("\n");
 	_puts("$ ");
-	_putchar(BUF_FLUSH);
 }
 /**
  * get_input - get pointer inputs
