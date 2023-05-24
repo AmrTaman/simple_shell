@@ -15,7 +15,7 @@ int main(int ac, char **av)
 
 	while (1)
 	{
-		_puts("$");
+		_puts("($)");
 		fflush(stdout);
 		_puts(" ");
 		fflush(stdout);
