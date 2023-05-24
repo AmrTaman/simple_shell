@@ -3,7 +3,6 @@
  * main - simpel shell
  * @ac: number of arguments
  * @av: array of inputs
- * @env: environment variables array
  *
  * Return: 0
  */
