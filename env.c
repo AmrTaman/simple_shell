@@ -1,4 +1,9 @@
 #include "shell.h"
+/**
+ * env - prints env variable
+ *
+ *Return: 0
+ */
 
 int env(void)
 {
