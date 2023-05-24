@@ -23,6 +23,7 @@ int main(int ac, char **av)
 		if (input == NULL)
 		{
 			_puts("\n");
+			exit(0);
 			break;
 		}
 		else if (input[0] == '\0')
