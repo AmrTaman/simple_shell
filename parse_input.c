@@ -17,7 +17,7 @@ void echeck(char *token, char *input, char *trick)
 	{
 		free(trick);
 		free(input);
-		exit(EXIT_SUCESS);
+		exit(EXIT_SUCCESS);
 	}
 }
 

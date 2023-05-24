@@ -12,7 +12,7 @@
 #include <string.h>
 
 extern char **environ;
-void echeck(char *, char *, char *, char **);
+void echeck(char *, char *, char *);
 char *_strtok(char *, char *);
 int _isspace(int);
 int env(char*, char*);
