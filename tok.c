@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * delim - delimeter
+ * delimt - delimeter
  * @m: m
  * @delim: delimeter
  *
@@ -8,9 +8,9 @@
  */
 unsigned int delimt(char m, char *delim)
 {
-	while(*delim != '\0')
+	while (*delim != '\0')
 	{
-		if(m == *delim)
+		if (m == *delim)
 			return (1);
 		delim++;
 	}
@@ -27,31 +27,31 @@ char *_strtok(char *str, char *delim)
 {
 	static char *strb, *ret;
 
-	if(!str)
+	if (!str)
 		str = strb;
-	if(!str)
+	if (!str)
 		return (NULL);
-	while(1)
+	while (1)
 	{
-		if(delimt(*str, delim))
+		if (delimt(*str, delim))
 		{
 			str++;
 			continue;
 		}
-		if(*str == '\0')
-			return (NULL); 
+		if (*str == '\0')
+			return (NULL);
 		break;
 	}
 	ret = str;
 
-	while(1)
+	while (1)
 	{
-		if(*str == '\0')
+		if (*str == '\0')
 		{
 			strb = str;
 			return (ret);
 		}
-		if(delimt(*str, delim))
+		if (delimt(*str, delim))
 		{
 			*str = '\0';
 			strb = str + 1;
