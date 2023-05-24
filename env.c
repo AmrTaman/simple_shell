@@ -6,7 +6,8 @@ int env(void)
 
 	while (environ[i])
 	{
-		puts(environ);
+		puts(environ[i]);
 		i++;
 	}
+	return (0);
 }
