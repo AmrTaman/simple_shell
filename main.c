@@ -12,7 +12,7 @@ int main(int ac, char **av)
 	char *input;
 	char **command;
 	int i, h, count = 1;
-	
+
 	signal(SIGINT, handler);
 	while (1)
 	{
@@ -45,8 +45,6 @@ int main(int ac, char **av)
 			free(command[i]);
 		free(command);
 		free(input);
-		if (!isatty(STDIN_FILENO))
-			_puts("$ ");
 	}
 	return (0);
 }
