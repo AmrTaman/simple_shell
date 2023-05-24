@@ -70,7 +70,8 @@ char *path_check(char *ip)
 	{
 		if (access(token, X_OK) == 0)
 		{
-			last = calloc(1, sizeof(char) * _strlen(token) + 1);
+			last = malloc(sizeof(char) * _strlen(token) + 1);
+			last[_strlen(token) + 1] = '\0';
 			_strcpy(last, token);
 			free(value);
 			return (last);

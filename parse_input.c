@@ -14,7 +14,7 @@ char **parsing(char *ayy, char *input, int count, char *token, int x)
 	char **grid;
 	int m = 0;
 
-	grid = malloc(1, sizeof(char *) * count);
+	grid = malloc(sizeof(char *) * count);
 	count = 0;
 	if (x > 0)
 		free(token);
@@ -22,12 +22,14 @@ char **parsing(char *ayy, char *input, int count, char *token, int x)
 	{
 		if (count == 0)
 		{
-			grid[count] = malloc(1, sizeof(char) * _strlen(ayy) + 1);
+			grid[count] = malloc(sizeof(char) * _strlen(ayy) + 1);
+			grid[_strlen(ayy) + 1] = '\0';
 			_strcpy(grid[count], ayy);
 		}
 		if (count != 0)
 		{
-			grid[count] = malloc(1, sizeof(char) * _strlen(token) + 1);
+			grid[count] = malloc(sizeof(char) * _strlen(token) + 1);
+			grid[_strlen(token) + 1] = '\0';
 			_strcpy(grid[count], token);
 		}
 		count++;
@@ -75,7 +77,8 @@ char **parse_input(char *input, char *fi, int line_count)
 	count = count_words(input);
 	while (input[m])
 		m++;
-	trick = calloc(1, sizeof(char) * m + 2);
+	trick = malloc(sizeof(char) * m + 2);
+	trick[m + 2] = '\0' ;
 	m = 0;
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
