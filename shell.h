@@ -28,3 +28,4 @@ char *path_check(char *ip);
 char **parse_input(char *, char *, int);
 char  *str_concat(char *s1, char *s2);
 #endif
+
