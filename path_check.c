@@ -7,7 +7,7 @@
  *
  * Return: a string pointer
  */
-har *setting_string(char *path, char *ip, int count)
+char *setting_string(char *path, char *ip, int count)
 {
 	int i = 0, m = 0;
 	char *value;
