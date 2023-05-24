@@ -6,7 +6,7 @@
  * @fi: filename
  *
  */
-oid print_error(char *fi, char *token, int i)
+void print_error(char *fi, char *token, int i)
 {
 	_puts(fi);
 	_puts(": ");
