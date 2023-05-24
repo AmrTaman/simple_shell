@@ -21,8 +21,7 @@ int echeck(char *token, char *input, char *trick, char *fi, int m)
 	{
 		print_error(fi, token, m);
 		free(trick);
-		free(input);
-		exit(0);
+		return (4);
 	}
 	if (i == 5)
 	{
@@ -121,7 +120,7 @@ char **parse_input(char *input, char *fi, int line_count)
 	trick[_strlen(input)] = ' ';
 	token = _strtok(trick, "\t ");
 	if (echeck(token, input, trick, fi, line_count))
-		return (NULL);
+		return (input);
 	while (token[i] == check[i])
 		i++;
 	if (i == 4)
