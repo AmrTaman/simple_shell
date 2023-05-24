@@ -8,7 +8,7 @@
  * Return: 0
  */
 
-int main(int *ac, char **av, char **env)
+int main(int ac, char **av)
 {
 	char *input;
 	char **command;
@@ -21,7 +21,8 @@ int main(int *ac, char **av, char **env)
 		fflush(stdout);
 		_puts(" ");
 		fflush(stdout);
-		input = get_input();
+		if (ac)
+			input = get_input();
 		if (input == NULL)
 		{
 			_puts("\n");
