@@ -2,10 +2,12 @@
 /**
  * env - prints env variable
  *
+ * @trick: free
+ * @input: free
  *Return: 0
  */
 
-int env(void)
+int env(char *trick, char *input)
 {
 	int i = 0;
 
@@ -14,6 +16,8 @@ int env(void)
 		puts(environ[i]);
 		i++;
 	}
+	free(trick);
+	free(input);
 	return (0);
 }
 

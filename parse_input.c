@@ -1,5 +1,26 @@
 #include"shell.h"
 /**
+ * echeck - checks for exit
+ * @token: token pointer
+ * @input: hi
+ * @trick: bi
+ */
+void echeck(char *token, char *input, char *trick)
+{
+	int i = 0;
+	char *check = "exit";
+
+	while (token[i] == check[i])
+		i++;
+	if (i == 5)
+	{
+		free(trick);
+		free(input);
+		exit(EXIT_SUCCESS);
+	}
+}
+
+/**
  * parsing - returns the tokens
  * @ayy: pointer
  * @token: token pointer
@@ -87,13 +108,12 @@ char **parse_input(char *input, char *fi, int line_count)
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
 	token = strtok(trick, "\t ");
+	echeck(token, input, trick);
 	while (token[i] == check[i])
 		i++;
 	if (i == 4)
 	{
-		env();
-		free(trick);
-		free(input);
+		env(trick, input);
 		return (NULL);
 	}
 	if (access(token, X_OK) == -1)
