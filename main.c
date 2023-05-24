@@ -12,7 +12,6 @@ int main(int ac, char **av)
 	char **command;
 	int i, h, count = 1;
 
-	signal(SIGINT, handler);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -23,7 +22,7 @@ int main(int ac, char **av)
 			input = get_input();
 		if (input == NULL)
 		{
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 		else if (input[0] == '\0')
 		{
