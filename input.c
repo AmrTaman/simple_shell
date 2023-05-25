@@ -20,7 +20,6 @@ char *get_input(void)
 	size_t num = 0;
 	ssize_t nread;
 	char *line = NULL;
-	int x = 0;
 
 	/* getting stdin i/p */
 	nread = getline(&line, &num, stdin);
