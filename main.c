@@ -8,14 +8,13 @@
 int checker(char *input)
 {
 	int h = 0, check = 0;
-	
-	while(input[h])
+
+	while (input[h])
 	{
 		if (isspace(input[h]))
 			check++;
 		h++;
 	}
-	h--;
 	if (h == check)
 	{
 		free(input);
