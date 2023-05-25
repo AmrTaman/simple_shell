@@ -4,9 +4,10 @@
  * @token: token pointer
  * @input: hi
  * @trick: bi
+ * @status: exit status
  * Return: 0 or 1
  */
-int echeck(char *token, char *input, char *trick)
+int echeck(char *token, char *input, char *trick, int status)
 {
 	int i = 0, x = 0;
 	char *check = "exit";
@@ -24,7 +25,7 @@ int echeck(char *token, char *input, char *trick)
 	{
 		free(trick);
 		free(input);
-		exit(EXIT_SUCCESS);
+		exit(status);
 	}
 	return (0);
 }
@@ -100,10 +101,11 @@ void print_error(char *fi, char *token, int i)
  * @input: input from stdin
  * @fi: file name
  * @line_count: line counting
+ * @status: exit status
  *
  * Return: array of command structure
  */
-char **parse_input(char *input, char *fi, int line_count)
+char **parse_input(char *input, char *fi, int line_count, int status)
 {
 	int count = 0, m = 0, i = 0, x = 0;
 	char *token, *trick, *check = "env", *ayy, **grid;
@@ -116,7 +118,7 @@ char **parse_input(char *input, char *fi, int line_count)
 	_strcpy(trick, input);
 	trick[_strlen(input)] = ' ';
 	token = _strtok(trick, "\t ");
-	if (echeck(token, input, trick))
+	if (echeck(token, input, trick, status))
 		return (NULL);
 	while (token[i] == check[i])
 		i++;

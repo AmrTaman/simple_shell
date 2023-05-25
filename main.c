@@ -33,7 +33,8 @@ int main(int ac, char **av)
 {
 	char *input;
 	char **command;
-	int i, h, count = 1;
+	int i, h, count = 1, status, s = 0;
+	pid_t pid;
 
 	while (1)
 	{
@@ -50,13 +51,17 @@ int main(int ac, char **av)
 		}
 		if (checker(input))
 			continue;
-		command = parse_input(input, av[0], count);
+		command = parse_input(input, av[0], count, s);
 		count++;
 		if (command == NULL)
 			continue;
-		if (fork() == 0)
+		pid = fork();
+		if (pid == 0)
+		{
 			execve(command[0], command, NULL);
-		wait(NULL);
+		}
+		waitpid(pid, &status, 0);
+		s = WEXITSTATUS(status);
 		h = 0;
 		while (command[h])
 			h++;
